@@ -1,5 +1,9 @@
 # mgu-render changelog
 
+## 0.6.12
+
+- The foreground gate tries again every 5 s a `RemoteHmiApplication` instance whose proxy failed (as while the HMI still starts), and reads an instance's stack again when it becomes available. Before, such an instance was never watched until the renderer restarted: an app the HMI then showed there was never in front, so the kit drew it in the HMI's own page with the HMI's button bar, not full screen. Seen after an iDrive start (Redline stayed so for the whole drive).
+
 ## 0.6.11
 
 - iDrive 7: `touch_area = auto` is 84,0,1836,720, the title strip included. With 84,76,1836,644 a tap on an app's own header tab (the idrive7-apps kit draws its tabs there) went to the HMI, which closed the app: black screen. Apps never claim the status icons, so they still reach the HMI.
